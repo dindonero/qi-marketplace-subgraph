@@ -5,17 +5,15 @@ import {
 } from "../generated/QiBackground/QiBackground"
 import {
   QiBackgroundMinted,
-  QiBackgroundRequested,
-  Transfer
+  QiBackgroundRequested
 } from "../generated/schema"
+import {Address} from "@graphprotocol/graph-ts";
 
 export function handleQiBackgroundMinted(event: QiBackgroundMintedEvent): void {
-  let entity = new QiBackgroundMinted(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
+  let entity = new QiBackgroundMinted(event.params.tokenId.toString())
+
   entity.requestId = event.params.requestId
   entity.owner = event.params.owner
-  entity.tokenId = event.params.tokenId
   entity.category = event.params.category
   entity.backgroundId = event.params.backgroundId
 
@@ -24,17 +22,23 @@ export function handleQiBackgroundMinted(event: QiBackgroundMintedEvent): void {
   entity.transactionHash = event.transaction.hash
 
   entity.save()
+
+    // Delete the Background Request
+    let request = QiBackgroundRequested.load(event.params.tokenId.toString())
+    if (request) {
+        request.owner = Address.fromString("0x0000000000000000000000000000000000000000")
+        request.save()
+    }
+
 }
 
 export function handleQiBackgroundRequested(
   event: QiBackgroundRequestedEvent
 ): void {
-  let entity = new QiBackgroundRequested(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
+  let entity = new QiBackgroundRequested(event.params.tokenId.toString())
+
   entity.requestId = event.params.requestId
   entity.owner = event.params.owner
-  entity.tokenId = event.params.tokenId
   entity.category = event.params.category
 
   entity.blockNumber = event.block.number
@@ -45,16 +49,10 @@ export function handleQiBackgroundRequested(
 }
 
 export function handleTransfer(event: TransferEvent): void {
-  let entity = new Transfer(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.from = event.params.from
-  entity.to = event.params.to
-  entity.tokenId = event.params.tokenId
+  let backgroundNFT = QiBackgroundMinted.load(event.params.tokenId.toString())
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
+    if (backgroundNFT) {
+        backgroundNFT.owner = event.params.to
+        backgroundNFT.save()
+    }
 }

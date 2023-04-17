@@ -17,7 +17,6 @@ dataSources:
         - QiNFTBurned
         - QiNFTMinted
         - QiNFTRequested
-        - Transfer
       abis:
         - name: Qi
           file: ./abis/Qi.json
@@ -45,7 +44,6 @@ dataSources:
       entities:
         - QiBackgroundMinted
         - QiBackgroundRequested
-        - QiBackgroundTransfer
       abis:
         - name: QiBackground
           file: ./abis/QiBackground.json

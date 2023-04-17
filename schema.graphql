@@ -1,7 +1,6 @@
 
 type QiNFTBurned @entity(immutable: true) {
-  id: Bytes!
-  tokenId: BigInt! # uint256
+  id: String! # tokenId
   owner: Bytes! # address
   category: Int! # uint8
   animalVersionId: BigInt! # uint256
@@ -12,10 +11,9 @@ type QiNFTBurned @entity(immutable: true) {
 }
 
 type QiNFTMinted @entity(immutable: true) {
-  id: Bytes!
+  id: String! # tokenId
   requestId: BigInt! # uint256
   owner: Bytes! # address
-  tokenId: BigInt! # uint256
   category: Int! # uint8
   animalVersionId: BigInt! # uint256
   backgroundId: BigInt! # uint256
@@ -25,31 +23,19 @@ type QiNFTMinted @entity(immutable: true) {
 }
 
 type QiNFTRequested @entity(immutable: true) {
-  id: Bytes!
+  id: String! # tokenId
   requestId: BigInt! # uint256
   owner: Bytes! # address
-  tokenId: BigInt! # uint256
   category: Int! # uint8
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
 
-type Transfer @entity(immutable: true) {
-  id: Bytes!
-  from: Bytes! # address
-  to: Bytes! # address
-  tokenId: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
 type QiBackgroundMinted @entity(immutable: true) {
-  id: Bytes!
+  id: String! # tokenId
   requestId: BigInt! # uint256
   owner: Bytes! # address
-  tokenId: BigInt! # uint256
   category: Int! # uint8
   backgroundId: BigInt! # uint256
   blockNumber: BigInt!
@@ -58,21 +44,10 @@ type QiBackgroundMinted @entity(immutable: true) {
 }
 
 type QiBackgroundRequested @entity(immutable: true) {
-  id: Bytes!
+  id: String! # tokenId
   requestId: BigInt! # uint256
   owner: Bytes! # address
-  tokenId: BigInt! # uint256
   category: Int! # uint8
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type QiBackgroundTransfer @entity(immutable: true) {
-  id: Bytes!
-  from: Bytes! # address
-  to: Bytes! # address
-  tokenId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

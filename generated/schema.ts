@@ -12,9 +12,9 @@ import {
 } from "@graphprotocol/graph-ts";
 
 export class QiNFTBurned extends Entity {
-  constructor(id: Bytes) {
+  constructor(id: string) {
     super();
-    this.set("id", Value.fromBytes(id));
+    this.set("id", Value.fromString(id));
   }
 
   save(): void {
@@ -22,35 +22,24 @@ export class QiNFTBurned extends Entity {
     assert(id != null, "Cannot save QiNFTBurned entity without an ID");
     if (id) {
       assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type QiNFTBurned must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        id.kind == ValueKind.STRING,
+        `Entities of type QiNFTBurned must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
-      store.set("QiNFTBurned", id.toBytes().toHexString(), this);
+      store.set("QiNFTBurned", id.toString(), this);
     }
   }
 
-  static load(id: Bytes): QiNFTBurned | null {
-    return changetype<QiNFTBurned | null>(
-      store.get("QiNFTBurned", id.toHexString())
-    );
+  static load(id: string): QiNFTBurned | null {
+    return changetype<QiNFTBurned | null>(store.get("QiNFTBurned", id));
   }
 
-  get id(): Bytes {
+  get id(): string {
     let value = this.get("id");
-    return value!.toBytes();
+    return value!.toString();
   }
 
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
-  }
-
-  get tokenId(): BigInt {
-    let value = this.get("tokenId");
-    return value!.toBigInt();
-  }
-
-  set tokenId(value: BigInt) {
-    this.set("tokenId", Value.fromBigInt(value));
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
   }
 
   get owner(): Bytes {
@@ -118,9 +107,9 @@ export class QiNFTBurned extends Entity {
 }
 
 export class QiNFTMinted extends Entity {
-  constructor(id: Bytes) {
+  constructor(id: string) {
     super();
-    this.set("id", Value.fromBytes(id));
+    this.set("id", Value.fromString(id));
   }
 
   save(): void {
@@ -128,26 +117,24 @@ export class QiNFTMinted extends Entity {
     assert(id != null, "Cannot save QiNFTMinted entity without an ID");
     if (id) {
       assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type QiNFTMinted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        id.kind == ValueKind.STRING,
+        `Entities of type QiNFTMinted must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
-      store.set("QiNFTMinted", id.toBytes().toHexString(), this);
+      store.set("QiNFTMinted", id.toString(), this);
     }
   }
 
-  static load(id: Bytes): QiNFTMinted | null {
-    return changetype<QiNFTMinted | null>(
-      store.get("QiNFTMinted", id.toHexString())
-    );
+  static load(id: string): QiNFTMinted | null {
+    return changetype<QiNFTMinted | null>(store.get("QiNFTMinted", id));
   }
 
-  get id(): Bytes {
+  get id(): string {
     let value = this.get("id");
-    return value!.toBytes();
+    return value!.toString();
   }
 
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
   }
 
   get requestId(): BigInt {
@@ -166,15 +153,6 @@ export class QiNFTMinted extends Entity {
 
   set owner(value: Bytes) {
     this.set("owner", Value.fromBytes(value));
-  }
-
-  get tokenId(): BigInt {
-    let value = this.get("tokenId");
-    return value!.toBigInt();
-  }
-
-  set tokenId(value: BigInt) {
-    this.set("tokenId", Value.fromBigInt(value));
   }
 
   get category(): i32 {
@@ -233,9 +211,9 @@ export class QiNFTMinted extends Entity {
 }
 
 export class QiNFTRequested extends Entity {
-  constructor(id: Bytes) {
+  constructor(id: string) {
     super();
-    this.set("id", Value.fromBytes(id));
+    this.set("id", Value.fromString(id));
   }
 
   save(): void {
@@ -243,26 +221,24 @@ export class QiNFTRequested extends Entity {
     assert(id != null, "Cannot save QiNFTRequested entity without an ID");
     if (id) {
       assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type QiNFTRequested must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        id.kind == ValueKind.STRING,
+        `Entities of type QiNFTRequested must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
-      store.set("QiNFTRequested", id.toBytes().toHexString(), this);
+      store.set("QiNFTRequested", id.toString(), this);
     }
   }
 
-  static load(id: Bytes): QiNFTRequested | null {
-    return changetype<QiNFTRequested | null>(
-      store.get("QiNFTRequested", id.toHexString())
-    );
+  static load(id: string): QiNFTRequested | null {
+    return changetype<QiNFTRequested | null>(store.get("QiNFTRequested", id));
   }
 
-  get id(): Bytes {
+  get id(): string {
     let value = this.get("id");
-    return value!.toBytes();
+    return value!.toString();
   }
 
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
   }
 
   get requestId(): BigInt {
@@ -281,15 +257,6 @@ export class QiNFTRequested extends Entity {
 
   set owner(value: Bytes) {
     this.set("owner", Value.fromBytes(value));
-  }
-
-  get tokenId(): BigInt {
-    let value = this.get("tokenId");
-    return value!.toBigInt();
-  }
-
-  set tokenId(value: BigInt) {
-    this.set("tokenId", Value.fromBigInt(value));
   }
 
   get category(): i32 {
@@ -329,96 +296,10 @@ export class QiNFTRequested extends Entity {
   }
 }
 
-export class Transfer extends Entity {
-  constructor(id: Bytes) {
-    super();
-    this.set("id", Value.fromBytes(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id != null, "Cannot save Transfer entity without an ID");
-    if (id) {
-      assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type Transfer must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
-      );
-      store.set("Transfer", id.toBytes().toHexString(), this);
-    }
-  }
-
-  static load(id: Bytes): Transfer | null {
-    return changetype<Transfer | null>(store.get("Transfer", id.toHexString()));
-  }
-
-  get id(): Bytes {
-    let value = this.get("id");
-    return value!.toBytes();
-  }
-
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
-  }
-
-  get from(): Bytes {
-    let value = this.get("from");
-    return value!.toBytes();
-  }
-
-  set from(value: Bytes) {
-    this.set("from", Value.fromBytes(value));
-  }
-
-  get to(): Bytes {
-    let value = this.get("to");
-    return value!.toBytes();
-  }
-
-  set to(value: Bytes) {
-    this.set("to", Value.fromBytes(value));
-  }
-
-  get tokenId(): BigInt {
-    let value = this.get("tokenId");
-    return value!.toBigInt();
-  }
-
-  set tokenId(value: BigInt) {
-    this.set("tokenId", Value.fromBigInt(value));
-  }
-
-  get blockNumber(): BigInt {
-    let value = this.get("blockNumber");
-    return value!.toBigInt();
-  }
-
-  set blockNumber(value: BigInt) {
-    this.set("blockNumber", Value.fromBigInt(value));
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value!.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get transactionHash(): Bytes {
-    let value = this.get("transactionHash");
-    return value!.toBytes();
-  }
-
-  set transactionHash(value: Bytes) {
-    this.set("transactionHash", Value.fromBytes(value));
-  }
-}
-
 export class QiBackgroundMinted extends Entity {
-  constructor(id: Bytes) {
+  constructor(id: string) {
     super();
-    this.set("id", Value.fromBytes(id));
+    this.set("id", Value.fromString(id));
   }
 
   save(): void {
@@ -426,26 +307,26 @@ export class QiBackgroundMinted extends Entity {
     assert(id != null, "Cannot save QiBackgroundMinted entity without an ID");
     if (id) {
       assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type QiBackgroundMinted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        id.kind == ValueKind.STRING,
+        `Entities of type QiBackgroundMinted must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
-      store.set("QiBackgroundMinted", id.toBytes().toHexString(), this);
+      store.set("QiBackgroundMinted", id.toString(), this);
     }
   }
 
-  static load(id: Bytes): QiBackgroundMinted | null {
+  static load(id: string): QiBackgroundMinted | null {
     return changetype<QiBackgroundMinted | null>(
-      store.get("QiBackgroundMinted", id.toHexString())
+      store.get("QiBackgroundMinted", id)
     );
   }
 
-  get id(): Bytes {
+  get id(): string {
     let value = this.get("id");
-    return value!.toBytes();
+    return value!.toString();
   }
 
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
   }
 
   get requestId(): BigInt {
@@ -464,15 +345,6 @@ export class QiBackgroundMinted extends Entity {
 
   set owner(value: Bytes) {
     this.set("owner", Value.fromBytes(value));
-  }
-
-  get tokenId(): BigInt {
-    let value = this.get("tokenId");
-    return value!.toBigInt();
-  }
-
-  set tokenId(value: BigInt) {
-    this.set("tokenId", Value.fromBigInt(value));
   }
 
   get category(): i32 {
@@ -522,9 +394,9 @@ export class QiBackgroundMinted extends Entity {
 }
 
 export class QiBackgroundRequested extends Entity {
-  constructor(id: Bytes) {
+  constructor(id: string) {
     super();
-    this.set("id", Value.fromBytes(id));
+    this.set("id", Value.fromString(id));
   }
 
   save(): void {
@@ -535,26 +407,26 @@ export class QiBackgroundRequested extends Entity {
     );
     if (id) {
       assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type QiBackgroundRequested must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        id.kind == ValueKind.STRING,
+        `Entities of type QiBackgroundRequested must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
-      store.set("QiBackgroundRequested", id.toBytes().toHexString(), this);
+      store.set("QiBackgroundRequested", id.toString(), this);
     }
   }
 
-  static load(id: Bytes): QiBackgroundRequested | null {
+  static load(id: string): QiBackgroundRequested | null {
     return changetype<QiBackgroundRequested | null>(
-      store.get("QiBackgroundRequested", id.toHexString())
+      store.get("QiBackgroundRequested", id)
     );
   }
 
-  get id(): Bytes {
+  get id(): string {
     let value = this.get("id");
-    return value!.toBytes();
+    return value!.toString();
   }
 
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
   }
 
   get requestId(): BigInt {
@@ -575,15 +447,6 @@ export class QiBackgroundRequested extends Entity {
     this.set("owner", Value.fromBytes(value));
   }
 
-  get tokenId(): BigInt {
-    let value = this.get("tokenId");
-    return value!.toBigInt();
-  }
-
-  set tokenId(value: BigInt) {
-    this.set("tokenId", Value.fromBigInt(value));
-  }
-
   get category(): i32 {
     let value = this.get("category");
     return value!.toI32();
@@ -591,94 +454,6 @@ export class QiBackgroundRequested extends Entity {
 
   set category(value: i32) {
     this.set("category", Value.fromI32(value));
-  }
-
-  get blockNumber(): BigInt {
-    let value = this.get("blockNumber");
-    return value!.toBigInt();
-  }
-
-  set blockNumber(value: BigInt) {
-    this.set("blockNumber", Value.fromBigInt(value));
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    return value!.toBigInt();
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get transactionHash(): Bytes {
-    let value = this.get("transactionHash");
-    return value!.toBytes();
-  }
-
-  set transactionHash(value: Bytes) {
-    this.set("transactionHash", Value.fromBytes(value));
-  }
-}
-
-export class QiBackgroundTransfer extends Entity {
-  constructor(id: Bytes) {
-    super();
-    this.set("id", Value.fromBytes(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id != null, "Cannot save QiBackgroundTransfer entity without an ID");
-    if (id) {
-      assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type QiBackgroundTransfer must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
-      );
-      store.set("QiBackgroundTransfer", id.toBytes().toHexString(), this);
-    }
-  }
-
-  static load(id: Bytes): QiBackgroundTransfer | null {
-    return changetype<QiBackgroundTransfer | null>(
-      store.get("QiBackgroundTransfer", id.toHexString())
-    );
-  }
-
-  get id(): Bytes {
-    let value = this.get("id");
-    return value!.toBytes();
-  }
-
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
-  }
-
-  get from(): Bytes {
-    let value = this.get("from");
-    return value!.toBytes();
-  }
-
-  set from(value: Bytes) {
-    this.set("from", Value.fromBytes(value));
-  }
-
-  get to(): Bytes {
-    let value = this.get("to");
-    return value!.toBytes();
-  }
-
-  set to(value: Bytes) {
-    this.set("to", Value.fromBytes(value));
-  }
-
-  get tokenId(): BigInt {
-    let value = this.get("tokenId");
-    return value!.toBigInt();
-  }
-
-  set tokenId(value: BigInt) {
-    this.set("tokenId", Value.fromBigInt(value));
   }
 
   get blockNumber(): BigInt {
