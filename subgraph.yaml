@@ -1,0 +1,45 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Qi
+    network: goerli
+    source:
+      address: "0xF8c9AC34d9451B5Ef8E98A9bfF36c136677085d7"
+      abi: Qi
+      startBlock: 8843832
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - Upgraded
+        - Approval
+        - ApprovalForAll
+        - QiNFTBurned
+        - QiNFTMinted
+        - QiNFTRequested
+        - Transfer
+      abis:
+        - name: Qi
+          file: ./abis/Qi.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: QiNFTBurned(indexed uint256,indexed address,indexed uint8,uint256,uint256)
+          handler: handleQiNFTBurned
+        - event: QiNFTMinted(indexed uint256,indexed address,indexed uint256,uint8,uint256,uint256)
+          handler: handleQiNFTMinted
+        - event: QiNFTRequested(indexed uint256,indexed address,indexed uint256,uint8)
+          handler: handleQiNFTRequested
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/qi.ts
