@@ -1,7 +1,11 @@
 {
   "goerli": {
     "Qi": {
-      "address": "0xF8c9AC34d9451B5Ef8E98A9bfF36c136677085d7",
+      "address": "0xf2D0BC0d5d31BeeCb41f42056D072c4300662718",
+      "startBlock": 8843832
+    },
+    "QiBackground": {
+      "address": "0x390Ec1D699B599d57713dEFDA65e22Ed1C862c18",
       "startBlock": 8843832
     }
   }

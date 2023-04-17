@@ -1,43 +1,22 @@
 import {
-  QiNFTBurned as QiNFTBurnedEvent,
-  QiNFTMinted as QiNFTMintedEvent,
-  QiNFTRequested as QiNFTRequestedEvent,
+  QiBackgroundMinted as QiBackgroundMintedEvent,
+  QiBackgroundRequested as QiBackgroundRequestedEvent,
   Transfer as TransferEvent
-} from "../generated/Qi/Qi"
+} from "../generated/QiBackground/QiBackground"
 import {
-  QiNFTBurned,
-  QiNFTMinted,
-  QiNFTRequested,
+  QiBackgroundMinted,
+  QiBackgroundRequested,
   Transfer
 } from "../generated/schema"
 
-
-export function handleQiNFTBurned(event: QiNFTBurnedEvent): void {
-  let entity = new QiNFTBurned(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.tokenId = event.params.tokenId
-  entity.owner = event.params.owner
-  entity.category = event.params.category
-  entity.animalVersionId = event.params.animalVersionId
-  entity.backgroundId = event.params.backgroundId
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleQiNFTMinted(event: QiNFTMintedEvent): void {
-  let entity = new QiNFTMinted(
+export function handleQiBackgroundMinted(event: QiBackgroundMintedEvent): void {
+  let entity = new QiBackgroundMinted(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.requestId = event.params.requestId
   entity.owner = event.params.owner
   entity.tokenId = event.params.tokenId
   entity.category = event.params.category
-  entity.animalVersionId = event.params.animalVersionId
   entity.backgroundId = event.params.backgroundId
 
   entity.blockNumber = event.block.number
@@ -47,8 +26,10 @@ export function handleQiNFTMinted(event: QiNFTMintedEvent): void {
   entity.save()
 }
 
-export function handleQiNFTRequested(event: QiNFTRequestedEvent): void {
-  let entity = new QiNFTRequested(
+export function handleQiBackgroundRequested(
+  event: QiBackgroundRequestedEvent
+): void {
+  let entity = new QiBackgroundRequested(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.requestId = event.params.requestId
