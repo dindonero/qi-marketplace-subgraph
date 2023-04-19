@@ -20,6 +20,7 @@ export function handleQiNFTBurned(event: QiNFTBurnedEvent): void {
     entity.category = event.params.category
     entity.animalVersionId = event.params.animalVersionId
     entity.backgroundId = event.params.backgroundId
+    entity.ethAmountReturned = event.params.ethAmountReturned
 
     entity.blockNumber = event.block.number
     entity.blockTimestamp = event.block.timestamp

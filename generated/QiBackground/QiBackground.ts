@@ -948,26 +948,20 @@ export class InitializeCall__Inputs {
     this._call = call;
   }
 
-  get _vrfConfig(): InitializeCall_vrfConfigStruct {
-    return changetype<InitializeCall_vrfConfigStruct>(
-      this._call.inputValues[0].value.toTuple()
-    );
-  }
-
   get _baseUri(): string {
-    return this._call.inputValues[1].value.toString();
+    return this._call.inputValues[0].value.toString();
   }
 
   get _qi(): Address {
-    return this._call.inputValues[2].value.toAddress();
+    return this._call.inputValues[1].value.toAddress();
   }
 
   get _qiTreasury(): Address {
-    return this._call.inputValues[3].value.toAddress();
+    return this._call.inputValues[2].value.toAddress();
   }
 
   get _feeNumerator(): BigInt {
-    return this._call.inputValues[4].value.toBigInt();
+    return this._call.inputValues[3].value.toBigInt();
   }
 }
 
@@ -976,24 +970,6 @@ export class InitializeCall__Outputs {
 
   constructor(call: InitializeCall) {
     this._call = call;
-  }
-}
-
-export class InitializeCall_vrfConfigStruct extends ethereum.Tuple {
-  get vrfConsumerBase(): Address {
-    return this[0].toAddress();
-  }
-
-  get subscriptionId(): BigInt {
-    return this[1].toBigInt();
-  }
-
-  get gasLane(): Bytes {
-    return this[2].toBytes();
-  }
-
-  get callbackGasLimit(): BigInt {
-    return this[3].toBigInt();
   }
 }
 

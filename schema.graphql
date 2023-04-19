@@ -5,6 +5,7 @@ type QiNFTBurned @entity(immutable: true) {
   category: Int! # uint8
   animalVersionId: BigInt! # uint256
   backgroundId: BigInt! # uint256
+  ethAmountReturned: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

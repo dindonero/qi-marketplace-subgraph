@@ -6,9 +6,9 @@ dataSources:
     name: Qi
     network: goerli
     source:
-      address: "0xf2D0BC0d5d31BeeCb41f42056D072c4300662718"
+      address: "0xB7BBABfC41323476461A45801aa61954BfE68e24"
       abi: Qi
-      startBlock: 8843832
+      startBlock: 8855340
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -17,11 +17,12 @@ dataSources:
         - QiNFTBurned
         - QiNFTMinted
         - QiNFTRequested
+        - Transfer
       abis:
         - name: Qi
           file: ./abis/Qi.json
       eventHandlers:
-        - event: QiNFTBurned(indexed uint256,indexed address,indexed uint8,uint256,uint256)
+        - event: QiNFTBurned(indexed uint256,indexed address,indexed uint8,uint256,uint256,uint256)
           handler: handleQiNFTBurned
         - event: QiNFTMinted(indexed uint256,indexed address,indexed uint256,uint8,uint256,uint256)
           handler: handleQiNFTMinted
@@ -34,9 +35,9 @@ dataSources:
     name: QiBackground
     network: goerli
     source:
-      address: "0x390Ec1D699B599d57713dEFDA65e22Ed1C862c18"
+      address: "0x81aBFf0C9f5786983fD9fF40a2e086B0060FC98A"
       abi: QiBackground
-      startBlock: 8843875
+      startBlock: 8855345
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -44,10 +45,19 @@ dataSources:
       entities:
         - QiBackgroundMinted
         - QiBackgroundRequested
+        - QiBackgroundTransfer
       abis:
         - name: QiBackground
           file: ./abis/QiBackground.json
       eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
         - event: QiBackgroundMinted(indexed uint256,indexed address,indexed uint256,uint8,uint256)
           handler: handleQiBackgroundMinted
         - event: QiBackgroundRequested(indexed uint256,indexed address,indexed uint256,uint8)

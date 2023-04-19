@@ -119,7 +119,8 @@
       { "type": "address", "name": "owner", "indexed": true },
       { "type": "uint8", "name": "category", "indexed": true },
       { "type": "uint256", "name": "animalVersionId", "indexed": false },
-      { "type": "uint256", "name": "backgroundId", "indexed": false }
+      { "type": "uint256", "name": "backgroundId", "indexed": false },
+      { "type": "uint256", "name": "ethAmountReturned", "indexed": false }
     ]
   },
   {
@@ -244,16 +245,6 @@
     "constant": false,
     "payable": false,
     "inputs": [
-      {
-        "type": "tuple",
-        "name": "_vrfConfig",
-        "components": [
-          { "type": "address", "name": "vrfConsumerBase" },
-          { "type": "uint64", "name": "subscriptionId" },
-          { "type": "bytes32", "name": "gasLane" },
-          { "type": "uint32", "name": "callbackGasLimit" }
-        ]
-      },
       { "type": "string", "name": "baseURI" },
       { "type": "address", "name": "_qiBackground" },
       { "type": "address", "name": "_treasury" },

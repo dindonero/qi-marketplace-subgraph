@@ -209,16 +209,6 @@
     "constant": false,
     "payable": false,
     "inputs": [
-      {
-        "type": "tuple",
-        "name": "_vrfConfig",
-        "components": [
-          { "type": "address", "name": "vrfConsumerBase" },
-          { "type": "uint64", "name": "subscriptionId" },
-          { "type": "bytes32", "name": "gasLane" },
-          { "type": "uint32", "name": "callbackGasLimit" }
-        ]
-      },
       { "type": "string", "name": "_baseUri" },
       { "type": "address", "name": "_qi" },
       { "type": "address", "name": "_qiTreasury" },

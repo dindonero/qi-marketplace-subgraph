@@ -78,6 +78,15 @@ export class QiNFTBurned extends Entity {
     this.set("backgroundId", Value.fromBigInt(value));
   }
 
+  get ethAmountReturned(): BigInt {
+    let value = this.get("ethAmountReturned");
+    return value!.toBigInt();
+  }
+
+  set ethAmountReturned(value: BigInt) {
+    this.set("ethAmountReturned", Value.fromBigInt(value));
+  }
+
   get blockNumber(): BigInt {
     let value = this.get("blockNumber");
     return value!.toBigInt();
