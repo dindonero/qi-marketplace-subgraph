@@ -1,5 +1,5 @@
 
-type QiNFTBurned @entity(immutable: true) {
+type QiNFTBurned @entity {
   id: String! # tokenId
   owner: Bytes! # address
   category: Int! # uint8
@@ -11,7 +11,7 @@ type QiNFTBurned @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type QiNFTMinted @entity(immutable: true) {
+type QiNFTMinted @entity {
   id: String! # tokenId
   requestId: BigInt! # uint256
   owner: Bytes! # address
@@ -23,7 +23,7 @@ type QiNFTMinted @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type QiNFTRequested @entity(immutable: true) {
+type QiNFTRequested @entity {
   id: String! # tokenId
   requestId: BigInt! # uint256
   owner: Bytes! # address
@@ -33,7 +33,7 @@ type QiNFTRequested @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type QiBackgroundMinted @entity(immutable: true) {
+type QiBackgroundMinted @entity {
   id: String! # tokenId
   requestId: BigInt! # uint256
   owner: Bytes! # address
@@ -44,7 +44,7 @@ type QiBackgroundMinted @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type QiBackgroundRequested @entity(immutable: true) {
+type QiBackgroundRequested @entity {
   id: String! # tokenId
   requestId: BigInt! # uint256
   owner: Bytes! # address
